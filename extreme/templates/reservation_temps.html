@@ -1,0 +1,59 @@
+{% extends "bases.html"%}
+
+{% block content %}
+
+<style>
+.button-container form,
+.button-container form div {
+    display: inline;
+}
+
+.button-container button {
+    display: inline;
+    vertical-align: middle;
+}
+</style>
+
+<div class="button-container">
+<center>
+	
+	<h3 class="mt-4 mb-5">Combien de temps de massage voulez-vous ?</h3>
+	
+	<form action="reservation_temps" method="POST" name ="timming">
+		{% csrf_token %}
+		
+		<input type="hidden" value="5" name="temps">
+		<input type="submit" class="btn btn-primary mb-3" value="5min">
+		
+	</form>
+	
+	<form action="reservation_temps" method="POST" name ="timming">
+		{% csrf_token %}
+		
+		<input type="hidden" value="10" name="temps">
+		<input type="submit" class="btn btn-primary mb-3" value="10min">
+		
+	</form>
+	
+	<form action="reservation_temps" method="POST" name ="timming">
+		{% csrf_token %}
+		
+		<input type="hidden" value="15" name="temps">
+		<input type="submit" class="btn btn-primary mb-3" value="15min">
+		
+	</form>
+	
+	{% if time30 %}
+	<form action="reservation_temps" method="POST" name ="timming">
+		{% csrf_token %}
+		
+		<input type="hidden" value="30" name="temps">
+		<input type="submit" class="btn btn-primary mb-3" value="30min (uniquement pour les thalassos)">
+		
+	</form>
+	{% endif %}
+	
+</center>
+</div>
+
+{% endblock %}

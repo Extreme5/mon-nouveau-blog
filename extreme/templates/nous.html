@@ -1,0 +1,80 @@
+{% extends "bases.html"%}
+  
+{% block content %}
+
+<div class=" mb-5 mt-5">
+	<p ALIGN="center">
+		l'Extrême est une entreprise développée par Bastien et Alban Cadic en 2018.<BR>
+		Nous proposons des massages de haute qualité.<BR>
+		Notre objectif ? Le bien-être du client.<BR>
+		Chez l'extrême, c'est une détente certaine !<BR>
+		Nous faisons tout cela en respectant parfaitement nos employés.<BR>
+		Par exemple : nous en sommes désolés pour vous.<BR>
+		Mais nous ne faisons que 15 minutes de massages d'affilé au maximum.<BR>
+		(sauf pour nos thalassos de 30 min).<BR>
+		Ainsi, nos masseurs peuvent se reposer et travailler sans stress.<br>
+		Nous sommes passionnés par l'art du massage et nous voulons offrir une expérience exceptionnelle à nos clients.<br>
+		En tant qu'équipe de professionnels qualifiés et expérimentés,<br>
+		nous mettons tout en œuvre pour vous offrir un moment de détente absolue et de bien-être profond.<br>
+		L'Extrême est bien plus qu'une entreprise de massage.<br>
+		Nous sommes une famille de praticiens dévoués, animés par la passion de faire votre bien-être.<br>
+		Nous sommes aussi liés par désir de prendre soin de notre planète, ainsi, nous n'utilisons aucun appareil énergivore.
+	</p>
+</div>
+
+<center>
+<div class="row row justify-content-center">
+	<div class="col-lg-4 mt-5 mb-5">
+		<div class="card shadow" style="width: 18rem;">
+			<!-- <img src="https://cdn.pixabay.com/photo/2018/09/28/08/30/woman-3708735_1280.jpg" class="card-img-top" alt="portrait de Bastien Cadic"> -->
+			<div class="card-body">
+					<h2 class="card-title">Bastien Cadic</h2>
+					<p class="card-text">Bastien Cadic, <span id="agebast"></span> ans, est notre salarié le plus dévoué.<br>
+						C'est un très bon masseur qui excelle dans l'art de détendre les gens.<br>
+						Il est fidèle au bonheur du client depuis la création de notre entreprise, il y a <span id="olding"></span> ans.</p>
+			</div>
+			</div>
+	</div>
+
+	<div class="col-lg-4 mt-5 mb-5">
+		<div class="card shadow" style="width: 18rem;">
+			<!-- <img src="file:///Users/albancadic/Documents/mon_site/siteweb/extreme/templates/portrait_alban.jpg" class="card-img-top"> -->
+			<div class="card-body">
+					<h2 class="card-title">Alban Cadic</h2>
+					<p class="card-text">Alban Cadic, <span id="ageal"></span> ans, est le patron (et actionnaire majoritaire) de notre entreprise.<br>
+						Mais c'est avant tout un très bon masseur engagé pour le bonheur du client. Il a aussi <span id="olding2"></span> ans d'éxperience dans le domaine du massage.</p>
+			</div>
+			</div>
+	</div>
+</div>
+</center>
+
+<script>
+		
+    function age(date) { 
+        var diff = Date.now() - date.getTime();
+        var age = new Date(diff);
+		var agePrecis = age.getUTCFullYear() - 1970;
+
+        return agePrecis
+    }
+	
+	// Appel de la fonction et mise à jour de l'élément HTML lors du chargement de la page
+	document.addEventListener('DOMContentLoaded', function() {
+		var bornDateBast = new Date(2011, 05, 21); // les mois sont indexés à partir de 0
+		var toBast = document.getElementById('agebast');
+		toBast.innerText = age(bornDateBast);
+
+		var bornDateAl = new Date(2009, 02, 20); // les mois sont indexés à partir de 0
+		var toAl = document.getElementById('ageal');
+		toAl.innerText = age(bornDateAl);
+
+		var olding = new Date(2018, 00, 00); // les mois sont indexés à partir de 0
+		var toOld = document.getElementById('olding');
+		var toOld2 = document.getElementById('olding2');
+		toOld.innerText = age(olding);
+		toOld2.innerText = age(olding);
+	});
+</script>
+
+{% endblock %}

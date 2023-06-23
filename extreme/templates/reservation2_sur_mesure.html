@@ -1,0 +1,139 @@
+{% extends "bases.html"%}
+
+{% block content %}
+<script>
+	function updatePrices() {
+		// Récupérer les éléments de case à cocher pour les options
+		var options = document.getElementsByName("type_option");
+		
+		// Calculer le prix total en fonction des options sélectionnées
+		var optionPrice = 0;
+		for (var i = 0; i < options.length; i++) {
+			if (options[i].checked) {
+				optionPrice += parseFloat(options[i].getAttribute("price"));
+			}
+		}
+		
+		// Mettre à jour les boutons avec les prix actualisés
+		var buttons = document.getElementsByClassName("reservation-btn");
+		for (var i = 0; i < buttons.length; i++) {
+			var originalText = buttons[i].getAttribute("data-originalText");
+			var price = parseFloat(buttons[i].getAttribute("data-price"));
+			var coef_time = buttons[i].getAttribute("data-coef_time");
+			// Calculer le prix total et l'arrondir à deux décimales
+			totalPrice = (price + (optionPrice * coef_time)).toFixed(2)
+			var newText = originalText + " (" + totalPrice + " €)";
+			buttons[i].value = newText;
+		}
+	}
+
+	// Écouter les événements de changement pour les cases à cocher
+	window.addEventListener("load", function() {
+		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		for (var i = 0; i < checkboxes.length; i++) {
+			checkboxes[i].addEventListener("change", updatePrices);
+		}
+	});
+
+    function decocher(a,b,c,d,e,f) {
+        document.getElementById(a).checked=false;
+        document.getElementById(b).checked=false;
+		document.getElementById(c).checked=false;
+		document.getElementById(d).checked=false;
+		document.getElementById(e).checked=false;
+		document.getElementById(f).checked=false;
+    }
+</script>
+<center>
+<form action="reservation2_sur_mesure" method="POST" name ="massage_mesure">
+	{% csrf_token %}
+	<table class="table table-striped">
+		<thead align="center" class="h3 shadow">
+			<tr>
+				<th scope="col">massage</th>
+			</tr>
+		</thead>
+		<tbody align="center" class="shadow">
+			<tr>
+				<td><input id="tout_corps" onclick='decocher("bras_mains","dos","tete","epaules_nuque","pieds_jambes","sur_place")' type="checkbox" name="type_massage" value="tout le corps">
+					Tout le corps</td>
+			</tr>
+			<tr>
+				<td><input id="pieds_jambes" onclick='decocher("sur_place","tout_corps")' type="checkbox" name="type_massage" value="pieds, jambes">
+					Pieds, jambes</td>
+			</tr>
+			<tr>
+				<td><input id="epaules_nuque" onclick='decocher("sur_place","tout_corps")' type="checkbox" name="type_massage" value="épaules, nuque">
+					Épaules, nuque</td>
+			</tr>
+			<tr>
+				<td><input id="tete" onclick='decocher("sur_place","tout_corps")' type="checkbox" name="type_massage" value="tête">
+					Tête</td>
+			</tr>
+			<tr>
+				<td><input id="dos" onclick='decocher("sur_place","tout_corps")' type="checkbox" name="type_massage" value="dos">
+					Dos</td>
+			</tr>
+			<tr>
+				<td><input id="bras_mains" onclick='decocher("sur_place","tout_corps")' type="checkbox" name="type_massage" value="bras, mains">
+					Bras, mains</td>
+			</tr>
+			<tr>
+				<td><input id="sur_place" onclick='decocher("bras_mains","dos","tete","epaules_nuque","pieds_jambes","tout_corps")' type="checkbox" name="type_massage" value="sur place">
+					Je choisis sur place</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<table class="table table-striped">
+		<thead align="center" class="h3 shadow">
+			<tr>
+				<th scope="col">Options</th>
+			</tr>
+		</thead>
+		<tbody align="center" class="shadow">
+			<tr>
+				<td><input id="paire" type="checkbox" name="type_option" onclick='decocher("aucune")' value = "une 2ème paire de mains" price="0.30">
+					2ème paire de mains (30c les 5min)</td>
+			</tr>
+			<tr>
+				<td><input id="coussin" type="checkbox" name="type_option" onclick='decocher("aucune")' value = "le coussin massant" price="0.20">
+					Coussin massant (20c les 5min)</td>
+			</tr>
+			<tr>
+				<td><input id="masse_tete" type="checkbox" name="type_option" onclick='decocher("aucune")' value = "le masse tête" price="0.15">
+					Masse-tête (15c les 5min)</td>
+			</tr>
+			<tr>
+				<td><input id="insecte" type="checkbox" name="type_option" onclick='decocher("aucune")' value = "insecte masseur" price="0.10">
+					L'insecte masseur (10c les 5min)</td>
+			</tr>
+			<tr>
+				<td><input id="rouleau" type="checkbox" name="type_option" onclick='decocher("aucune")' value = "le rouleau" price="0.05">
+					Le rouleau (5c les 5min)</td>
+			</tr>
+			<tr>
+				<td><input id="aucune" type="checkbox" name="type_option" onclick='decocher("paire", "coussin", "masse_tete", "insecte", "rouleau")' value = "aucune option" price="0">
+					Aucune option (0€)</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>  <!-- Champ caché pour la valeur de temps -->
+    <input type="hidden" name="form_temps" id="form_temps" value="">
+
+
+	<p>⚠ Veuillez cocher la case "aucune option" si vous ne voulez prendre aucune option</p>
+    <!-- Boutons de réservation -->
+    <input id="5min" class="btn btn-primary mt-2 reservation-btn" type="submit" value="Réserver un créneau de 5min" data-originalText="Réserver un créneau de 5min" data-price="0.60" data-coef_time="1" onclick="setFormTemps(5)">
+    <input id="10min" class="btn btn-primary mt-2 reservation-btn" type="submit" value="Réserver un créneau de 10min" data-originalText="Réserver un créneau de 10min" data-price="1.20" data-coef_time="2" onclick="setFormTemps(10)">
+    <input id="15min" class="btn btn-primary mt-2 reservation-btn" type="submit" value="Réserver un créneau de 15min" data-originalText="Réserver un créneau de 15min" data-price="1.80" data-coef_time="3" onclick="setFormTemps(15)">
+</form>
+</center>
+
+<script>
+    function setFormTemps(temps) {
+        document.getElementById('form_temps').value = temps;
+    }
+</script>
+
+{% endblock %}

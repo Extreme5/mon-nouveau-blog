@@ -1,0 +1,92 @@
+{% extends "bases.html"%}
+
+{% block content %}
+
+<center>
+	<div class="row">
+		
+		<div class="col-lg-4 mt-5 mb-5">
+			<div class="card shadow" style="width: 18rem;">
+				<img src="https://d397xw3titc834.cloudfront.net/images/width/575/0/74/074e576899c10b7e14e35b63a2bb2fba.jpg" class="card-img-top" alt="photo de massage">
+				<div class="card-body content">
+						<h5 class="card-title">Supreme</h5>
+						<p class="card-text">Réservez LE massage !! Le Suprême est un massage de rêve ; il est relaxant, calme, étirant...<br>
+							Vous pouvez pendant ce massage, prendre une tisane, thé ou un jus de fruit bien frais.<br>
+							Le coussin massant et les huiles essentielles sont intégrées dans le massage !<br>
+							Vous pouvez écouter une musique douce et vous bander les yeux.</p>
+							<form action="reservation2_pret" method="POST" name ="type">
+								{% csrf_token %}
+								
+								<input type="hidden" value="Supreme" name="type_massage">
+								<input type="submit" class="btn btn-primary mb-3" value="réserver un créneau (à partir
+de 1,20€)">
+							</form>
+				</div>
+				</div>
+		</div>
+		
+		<div class="col-lg-4 mt-5 mb-5">
+			<div class="card shadow" style="width: 18rem;">
+				<img src="https://d397xw3titc834.cloudfront.net/images/width/575/4/3a/43a59cac30163a36ff9e440b2d096fd9.jpg" class="card-img-top" alt="photo de massage">
+				<div class="card-body content">
+						<h5 class="card-title">Tisane</h5>
+						<p class="card-text">Si vous êtes stressés ou que vous voulez vous endormir rapidement, ce massage est fait pour vous.<br>
+							C'est un massage doux accompagné d'une tisane ou d'une autre boisson de votre choix.<br>
+							Il est relaxant. Et rares sont ceux <br> qui n'ont pas succombé au sommeil.<br>
+							Les huiles essentielles sont intégrées dans ce massage.</p>
+							<form action="reservation2_pret" method="POST" name ="type">
+								{% csrf_token %}
+								
+								<input type="hidden" value="Tisane" name="type_massage">
+								<input type="submit" class="btn btn-primary mb-3" value="réserver un créneau (à partir
+de 1€)">
+							</form>
+				</div>
+				</div>
+		</div>
+		
+		<div class="col-lg-4 mt-5 mb-5">
+			<div class="card shadow" style="width: 18rem;">
+				<img src="https://d397xw3titc834.cloudfront.net/images/width/575/5/41/5419fa2e6914656b5a38a82f82ee8c4f.jpg" class="card-img-top" alt="photo de massage">
+				<div class="card-body content">
+						<h5 class="card-title">Étirements</h5>
+						<p class="card-text">Ce massage est fait pour s'étirer. Il vous rend bien dans votre corps.<br>
+							Ne vous êtes-vous jamais senti tout petit et recroquevillé sur vous-même ?<br>
+							Ne vous êtes-vous jamais étiré sans vous sentir étiré ?<br>
+							Et bien prenez ce massage, vous serez détendus, vous serez étirés, vous vous sentirez tout bien, vous verrez, prenez ce massage.</p>
+							<form action="reservation2_pret" method="POST" name ="type">
+								{% csrf_token %}
+								
+								<input type="hidden" value="Étirements" name="type_massage">
+								<input type="submit" class="btn btn-primary mb-3" value="réserver un créneau (à partir
+de 1€)">
+							</form>
+				</div>
+				</div>
+		</div>
+		
+		<div class="col-lg-4 mt-5 mb-5">
+			<div class="card shadow" style="width: 18rem;">
+				<img src="https://d397xw3titc834.cloudfront.net/images/width/575/0/f9/0f968f347531db525d00667064a21bea.jpg" class="card-img-top" alt="photo de massage">
+				<div class="card-body content">
+						<h5 class="card-title">Joyeux</h5>
+						<p class="card-text">Le joyeux et un massage qui est fortement recommandé lorsqu'on est las.<br>
+							Il redonne la joie de vivre tout en restant très doux.<br>
+							Ce massage est accompagné d'une musique douce mais entraînante.<br>
+							Le coussin massant est inclus dans ce formidable massage.</p>
+							<form action="reservation2_pret" method="POST" name ="type">
+								{% csrf_token %}
+								
+								<input type="hidden" value="Joyeux" name="type_massage">
+								<input type="submit" class="btn btn-primary mb-3" value="réserver un créneau (à partir
+de 1€)">
+								
+							</form>
+				</div>
+				</div>
+		</div>
+
+	</div>
+</center>
+
+{% endblock %}

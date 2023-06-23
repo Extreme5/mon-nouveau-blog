@@ -1,0 +1,41 @@
+{% extends "bases.html"%}
+
+{% block content %}
+
+<center>
+<div class="row row justify-content-center">
+	
+	<div class="col-lg-4 mt-5 mb-5 mx-auto">
+		<div class="card shadow" style="width: 18rem;">
+			<img src="https://www.balneospa45.fr/sites/default/files/images_balneospa/massage-visage.jpg" class="card-img-top" alt="photo de massage">
+			<div class="card-body">
+					<h5 class="card-title">Été</h5>
+					<p class="card-text">Une thalasso de rêve adaptée à l'été pour se refroidir les circuits et se détendre.<br>
+						Découvrez l'expérience rafraîchissante de la thalasso estivale au bord de la piscine. Plongez dans un monde de bien-être où vous pourrez vous détendre et vous ressourcer tout en profitant de l'atmosphère estivale.
+						Offrez-vous des massages relaxants (bien mérités 😉) pour une détente extrême.</p>
+					<a href="{% url 'reservation_date'%}" class="btn btn-primary">Réserver un créneau de 30min (5€)</a>
+			</div>
+			</div>
+	</div>
+	
+	
+	
+	<div class="col-lg-4 mt-5 mb-5 mx-auto">
+		<div class="card shadow" style="width: 18rem;">
+			<img src="https://www.balneospa45.fr/sites/default/files/images_balneospa/massage_0.jpg" class="card-img-top" alt="photo de massage">
+			<div class="card-body">
+					<h5 class="card-title">Hiver</h5>
+					<p class="card-text">Réchauffez-vous bien en cette saison (détendez-vous au passage 😊.) avec les thalassos d'hiver.
+					Nous vous proposons une thalasso qui va vous faire un bien fou :<br>
+					- bassine d'eau chaude pour les pieds + serviette chaude pour le séchage<br>
+					- envie d'un petit chocolat chaud ? Pas de problème, on sert la boisson chaude de votre choix.<br>
+					- tout ceci est bien évidemment accompagné d'un bon massage.</p>
+					<a href="{% url 'reservation_date'%}" class="btn btn-primary">Réserver un créneau de 30min (5€)</a>
+			</div>
+		</div>
+	</div>
+		
+</div>
+</center>
+
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends "bases.html"%}
+
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+input:input.bouton{
+	border-radius: 10px ;
+	background-color: blue;
+	font-size: 30px ;
+	}
+	.styled {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(3, 164, 241, 1);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+	}
+	.styled:hover {
+		background-color: rgba(75, 184, 133, 1);
+	}
+	
+	.styled:active {
+		box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+					inset 2px 2px 3px rgba(0, 0, 0, .6);
+	}
+
+</style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		// Options d'origine de la liste déroulante
+		var originalOptions = [];
+
+		// Récupérer les options d'origine
+		var selectElement = document.querySelector('select[name="hour"]');
+		for (var i = 0; i < selectElement.options.length; i++) {
+			originalOptions.push(selectElement.options[i].cloneNode(true));
+		}
+
+		function sendSelectedDate() {
+			var selectedDate = document.getElementById('datefield').value;
+			var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'reservation_date', true);
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.setRequestHeader('X-CSRFToken', csrfToken);
+			xhr.onreadystatechange = function() {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				// Réponse du serveur
+				var response = JSON.parse(xhr.responseText);
+				// Liste des options à supprimer
+				var optionsToRemove = response.time_list;
+
+				// Réinitialiser la liste déroulante avec les options d'origine
+				selectElement.innerHTML = '';
+				for (var i = 0; i < originalOptions.length; i++) {
+				selectElement.appendChild(originalOptions[i].cloneNode(true));
+				}
+
+				// Vérifier si des options doivent être supprimées
+				if (optionsToRemove && optionsToRemove.length > 0) {
+					// Parcourir les options de la liste déroulante
+					for (var i = selectElement.options.length - 1; i >= 0; i--) {
+						var option = selectElement.options[i];
+						var optionText = option.text;
+						// Vérifier si le texte de l'option contient l'une des valeurs à supprimer
+						if (optionsToRemove.indexOf(optionText) !== -1) {
+						// Supprimer l'option de la liste déroulante
+						selectElement.remove(i);
+						}
+					}
+				}
+			}
+			};
+			var date_ajax = JSON.stringify({ selectedDate });
+			xhr.send(date_ajax);
+		}
+
+		// Récupérer les options d'origine au chargement de la page
+		sendSelectedDate();
+
+		// Ajouter un événement de changement à la date
+		document.getElementById('datefield').addEventListener('change', sendSelectedDate);
+});
+</script>
+
+<center>
+	<form action="reservation_date" method="POST" name="dating">
+		{% csrf_token %}
+		
+		<label for="date" class="mb-3 mt-5 h3">Veuillez choisir votre date de réservation...</label><br/>
+		<input id="datefield" name="date" type="date" class="shadow"><br>
+		<div id="results"></div>
+		
+		<script>
+			var today = new Date();
+			var dd = today.getDate() + 1;
+			var mm = today.getMonth() + 1; // January is 0!
+			var yyyy = today.getFullYear();
+			
+			// Construction du format yyyy-mm-dd
+			if (dd < 10) {
+				dd = '0' + dd;
+			}
+			
+			if (mm < 10) {
+				mm = '0' + mm;
+			}
+			
+			today = yyyy + '-' + mm + '-' + dd;
+			document.getElementById("datefield").setAttribute("min", today);
+		</script>
+		
+		<label for="hour" class="mt-5 h3">Puis votre heure.</label><br>
+		<select class="shadow heure" name="hour">
+			<option valeur="other">09 : 30</option><option valeur="other">09 : 35</option><option valeur="other">09 : 40</option>
+			<option valeur="other">09 : 45</option><option valeur="other">09 : 50</option><option valeur="other">09 : 55</option>
+			<option valeur="other">10 : 00</option><option valeur="other">10 : 05</option><option valeur="other">10 : 10</option>
+			<option valeur="other">10 : 15</option><option valeur="other">10 : 20</option><option valeur="other">10 : 25</option>
+			<option valeur="other">10 : 30</option><option valeur="other">10 : 35</option><option valeur="other">10 : 40</option>
+			<option valeur="other">10 : 45</option><option valeur="other">10 : 50</option><option valeur="other">10 : 55</option>
+			<option valeur="other">11 : 00</option><option valeur="other">11 : 05</option><option valeur="other">11 : 10</option>
+			<option valeur="other">11 : 15</option><option valeur="other">11 : 20</option><option valeur="other">11 : 25</option>
+			<option valeur="other">11 : 30</option><option valeur="other">11 : 35</option><option valeur="other">11 : 40</option>
+			<option valeur="other">11 : 45</option><option valeur="other">11 : 50</option><option valeur="other">11 : 55</option>
+			<option valeur="other">12 : 00</option><option valeur="other">12 : 05</option><option valeur="other">12 : 10</option>
+			<option valeur="other">12 : 15</option><option valeur="other">12 : 20</option><option valeur="other">12 : 25</option>
+			<option valeur="other">12 : 30</option><option valeur="other">12 : 35</option><option valeur="other">12 : 40</option>
+			<option valeur="other">12 : 45</option><option valeur="other">12 : 50</option><option valeur="other">12 : 55</option>
+			<option valeur="other">13 : 00</option><option valeur="other">13 : 05</option><option valeur="other">13 : 10</option>
+			<option valeur="other">13 : 15</option><option valeur="other">13 : 20</option><option valeur="other">13 : 25</option>
+			<option valeur="other">13 : 30</option><option valeur="other">13 : 35</option><option valeur="other">13 : 40</option>
+			<option valeur="other">13 : 45</option><option valeur="other">13 : 50</option><option valeur="other">13 : 55</option>
+			<option valeur="other">14 : 00</option><option valeur="other">14 : 05</option><option valeur="other">14 : 10</option>
+			<option valeur="other">14 : 15</option><option valeur="other">14 : 20</option><option valeur="other">14 : 25</option>
+			<option valeur="other">14 : 30</option><option valeur="other">14 : 35</option><option valeur="other">14 : 40</option>
+			<option valeur="other">14 : 45</option><option valeur="other">14 : 50</option><option valeur="other">14 : 55</option>
+			<option valeur="other">15 : 00</option><option valeur="other">15 : 05</option><option valeur="other">15 : 10</option>
+			<option valeur="other">15 : 15</option><option valeur="other">15 : 20</option><option valeur="other">15 : 25</option>
+			<option valeur="other">15 : 30</option><option valeur="other">15 : 35</option><option valeur="other">15 : 40</option>
+			<option valeur="other">15 : 45</option><option valeur="other">15 : 50</option><option valeur="other">15 : 55</option>
+			<option valeur="other">16 : 00</option><option valeur="other">16 : 05</option><option valeur="other">16 : 10</option>
+			<option valeur="other">16 : 15</option><option valeur="other">16 : 20</option><option valeur="other">16 : 25</option>
+			<option valeur="other">16 : 30</option><option valeur="other">16 : 35</option><option valeur="other">16 : 40</option>
+			<option valeur="other">16 : 45</option><option valeur="other">16 : 50</option><option valeur="other">16 : 55</option>
+			<option valeur="other">17 : 00</option><option valeur="other">17 : 05</option><option valeur="other">17 : 10</option>
+			<option valeur="other">17 : 15</option><option valeur="other">17 : 20</option><option valeur="other">17 : 25</option>
+			<option valeur="other">17 : 30</option><option valeur="other">17 : 35</option><option valeur="other">17 : 40</option>
+			<option valeur="other">17 : 45</option><option valeur="other">17 : 50</option><option valeur="other">17 : 55</option>
+			<option valeur="other">18 : 00</option><option valeur="other">18 : 05</option><option valeur="other">18 : 10</option>
+			<option valeur="other">18 : 15</option><option valeur="other">18 : 20</option><option valeur="other">18 : 25</option>
+			<option valeur="other">18 : 30</option><option valeur="other">18 : 35</option><option valeur="other">18 : 40</option>
+			<option valeur="other">18 : 45</option><option valeur="other">18 : 50</option><option valeur="other">18 : 55</option>
+			<option valeur="other">19 : 00</option><option valeur="other">19 : 05</option><option valeur="other">19 : 10</option>
+			<option valeur="other">19 : 15</option><option valeur="other">19 : 20</option><option valeur="other">19 : 25</option>
+			<option valeur="other">19 : 30</option><option valeur="other">19 : 35</option><option valeur="other">19 : 40</option>
+			<option valeur="other">19 : 45</option><option valeur="other">19 : 50</option><option valeur="other">19 : 55</option>
+			<option valeur="other">20 : 00</option><option valeur="other">20 : 05</option><option valeur="other">20 : 10</option>
+			<option valeur="other">20 : 15</option><option valeur="other">20 : 20</option><option valeur="other">20 : 25</option>
+			<option valeur="other">20 : 30</option><option valeur="other">20 : 35</option><option valeur="other">20 : 40</option>
+			<option valeur="other">20 : 45</option><option valeur="other">20 : 50</option><option valeur="other">20 : 55</option>
+			<option valeur="other">21 : 00</option><option valeur="other">21 : 05</option><option valeur="other">21 : 10</option>
+			<option valeur="other">21 : 15</option><option valeur="other">21 : 20</option><option valeur="other">21 : 25</option>
+			<option valeur="other">21 : 30</option><option valeur="other">21 : 35</option><option valeur="other">21 : 40</option>
+			<option valeur="other">21 : 45</option><option valeur="other">21 : 50</option><option valeur="other">21 : 55</option>
+			<option valeur="other">22 : 00</option>
+		</select><br>
+
+
+		<input class="favorite styled mt-5 mb-5" type="submit" value="continuer">
+
+		
+	</form>
+</center>
+
+<!-- <iframe name="InlineFrame1" id="InlineFrame1" style="width:180px;height:220px;" src="https://www.mathieuweb.fr/calendrier/calendrier-des-semaines.php?nb_mois=1&nb_mois_ligne=4&mois=&an=&langue=fr&texte_color=B9CBDD&week_color=DAE9F8&week_end_color=C7DAED&police_color=453413&sel=true" scrolling="no" frameborder="0" allowtransparency="true"></iframe> -->
+
+{% endblock %}

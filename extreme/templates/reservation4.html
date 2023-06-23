@@ -1,0 +1,14 @@
+{% extends "bases.html"%}
+
+{% block content %}
+<center class="mt-5 mb-5 shadow p-4">
+			
+			<form action = "reservation4" method = "POST" name="mail">
+				{% csrf_token %}
+				<label for="email" class="h3 mb-3">Veuillez renseigner votre adresse e-mail pour finaliser la réservation.</label><br>
+				<input id="email" type="email" name="email" placeholder="Votre mail">
+				<input type="submit" value="réserver">
+			</form>
+			
+</center>
+{% endblock %}

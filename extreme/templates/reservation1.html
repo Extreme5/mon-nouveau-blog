@@ -1,0 +1,40 @@
+{% extends "bases.html" %}
+
+{% block content %}
+<center>
+	<div class="row">
+		<div class="col-lg-4 mt-5 mb-5">
+			<div class="card shadow" style="width: 18rem;">
+				<img src="https://pixnio.com/free-images/2020/12/08/2020-12-08-13-42-50-1500x1000.jpg" class="card-img-top" alt="photo de massage">
+				<div class="card-body">
+						<h5 class="card-title">Ready</h5>
+						<p class="card-text">Réservez le massage déjà prêt qui vous convient ; choisissez parmi notre sélection.</p>
+						<a href="{% url 'reservation2_pret' %}" class="btn btn-primary">Voir</a>
+				</div>
+				</div>
+		</div>
+		
+		<div class="col-lg-4 mt-5 mb-5">
+			<div class="card shadow" style="width: 18rem;">
+				<img src="https://cdn.pixabay.com/photo/2018/09/28/08/30/woman-3708735_1280.jpg" class="card-img-top" alt="photo de massage">
+				<div class="card-body">
+						<h5 class="card-title">Sur mesure</h5>
+						<p class="card-text">Choisissez vous-même vos parties du corps et vos options pour un massage adapté à vos besoins.</p>
+						<a href="{% url 'reservation2_sur_mesure' %}" class="btn btn-primary">Voir</a>
+				</div>
+				</div>
+		</div>
+		
+		<div class="col-lg-4 mt-5 mb-5">
+			<div class="card shadow" style="width: 18rem;">
+				<img src="https://cdn.pixabay.com/photo/2018/02/27/03/36/spa-3184610_1280.jpg" class="card-img-top" alt="photo de massage">
+				<div class="card-body">
+						<h5 class="card-title">Thalasso</h5>
+						<p class="card-text">Réservez une thalasso de 30 minutes prête ou sur mesure, d'été ou d'hiver.</p>
+						<a href="{% url 'reservation2_thalasso' %}" class="btn btn-primary">Voir</a>
+				</div>
+				</div>
+		</div>
+	</div>
+</center>
+{% endblock %}
