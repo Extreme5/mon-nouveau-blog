@@ -1,5 +1,5 @@
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.orange.fr'
-EMAIL_HOST_USER = 'albancadic.bruz@orange.fr'
-EMAIL_HOST_PASSWORD = '20mars2009'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "albancadic@gmail.com"
+EMAIL_HOST_PASSWORD = "Wse'rfvd4"
 EMAIL_PORT = 587
+EMAIL_USE_TLS = True
