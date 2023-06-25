@@ -11,7 +11,6 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
 import json
-path_database = "https://eu.pythonanywhere.com/user/Extreme1/files/home/Extreme1/extreme1.eu.pythonanywhere.com/bdd.db"
 
 global time30
 time30 = True
@@ -136,7 +135,7 @@ def reservation_date(request):
             selected_date = json_data.get('selectedDate')  # Récupérer la date sélectionnée
 
             # Traiter la date sélectionnée
-            conn = sqlite3.connect(path_database)
+            conn = sqlite3.connect('/Users/albancadic/Documents/mon_site/siteweb/bdd.db')
             cur = conn.cursor()
             sql = "SELECT time_list FROM reservation WHERE date = ?"
             cur.execute(sql, (selected_date,))
@@ -219,7 +218,7 @@ def reservation4(request):
 
             if 'option' in globals():
                 
-                conn = sqlite3.connect(path_database)
+                conn = sqlite3.connect('/Users/albancadic/Documents/mon_site/siteweb/bdd.db')
                 cur = conn.cursor()
                 sql = "INSERT INTO reservation (email,date,moment,fin,type_massage,\"option\",time_list) VALUES ('%s','%s','%s','%s','%s','%s','%s')" %(mail_to, form_date, form_hour, heure_fin, massage, option, time_list)
                 count = cur.execute(sql)
@@ -236,7 +235,7 @@ def reservation4(request):
             
             elif 'massage' in globals():
                 
-                conn = sqlite3.connect(path_database)
+                conn = sqlite3.connect('/Users/albancadic/Documents/mon_site/siteweb/bdd.db')
                 cur = conn.cursor()
                 sql = "INSERT INTO reservation (email,date,moment,fin,type_massage,time_list) VALUES ('%s','%s','%s','%s','%s','%s')" %(mail_to, form_date, form_hour, heure_fin, massage, time_list)
                 count = cur.execute(sql)
@@ -253,7 +252,7 @@ def reservation4(request):
             
             else:
                 
-                conn = sqlite3.connect(path_database)
+                conn = sqlite3.connect('/Users/albancadic/Documents/mon_site/siteweb/bdd.db')
                 cur = conn.cursor()
                 sql = "INSERT INTO reservation (email,date,moment,fin,time_list) VALUES ('%s','%s','%s','%s','%s')" %(mail_to, form_date, form_hour, heure_fin, time_list)
                 count = cur.execute(sql)
