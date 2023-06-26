@@ -2,6 +2,7 @@
 *.pyc
 *~
 __pycache__
+# pour les mots de passe des emails
 email.py
 
 # Env
