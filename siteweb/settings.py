@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-from .mail import*
+from .email import*
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
