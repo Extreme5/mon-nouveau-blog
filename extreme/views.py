@@ -227,7 +227,7 @@ def reservation4(request):
                 cur.close()
                 conn.close()
 
-                corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé le massage {massage} avec l'option {option} pour {form_temps}min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
+                corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé le massage {massage} avec l'option {option} pour {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
                                 f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
             
                 corps_message_client = ("Réservation chez l'Éxtrême", 
@@ -244,7 +244,7 @@ def reservation4(request):
                 cur.close()
                 conn.close()
 
-                corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé le massage {massage} pour {form_temps}min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
+                corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé le massage {massage} pour {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
                                 f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
             
                 corps_message_client = ("Réservation chez l'Éxtrême", 
@@ -261,7 +261,7 @@ def reservation4(request):
                 cur.close()
                 conn.close()
             
-                corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé un massage de {form_temps}min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
+                corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé un massage de {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
                                 f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
             
                 corps_message_client = ("Réservation chez l'Éxtrême", 
