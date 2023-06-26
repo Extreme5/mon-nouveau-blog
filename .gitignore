@@ -3,7 +3,7 @@
 *~
 __pycache__
 # pour les mots de passe des emails
-email.py
+/siteweb/email.py
 
 # Env
 .env
