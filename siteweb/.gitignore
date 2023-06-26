@@ -10,7 +10,7 @@ venv/
 
 # Base de donnée
 bdd.db
-*.py
+email.py
 
 # Dossier "static" à la racine du projet
 /static/
