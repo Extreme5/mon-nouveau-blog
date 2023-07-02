@@ -12,6 +12,8 @@ from django.views.decorators.http import require_POST
 from django.http import JsonResponse
 import json
 path_database = "/home/Extreme1/extreme1.eu.pythonanywhere.com/bdd.db"
+# path_database = "/Users/albancadic/Documents/mon_site/siteweb/bdd.db"
+from siteweb.settings import *
 
 global time30
 time30 = True
@@ -268,6 +270,8 @@ def reservation4(request):
                                         f"Bonjour, vous avez bien réservé un massage chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
                                         "massage.extreme@orange.fr", [f"{mail_to}"])
             
+            print(EMAIL_HOST_USER)
+            print(EMAIL_HOST_PASSWORD)
             send_mass_mail ((corps_message, corps_message_client), fail_silently=False)
 
 
