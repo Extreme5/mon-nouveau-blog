@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n#hv&ewofa&f5oaqu3sbhw1n6#kk08vu@qe9rxvqy59&1qjb(x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True # False
 
 ALLOWED_HOSTS = ['*']
 
@@ -118,7 +118,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = "/home/Extreme1/extreme1.eu.pythonanywhere.com/extreme/templates"
 STATIC_URL = 'static/'
 
 # Default primary key field type
