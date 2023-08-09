@@ -25,14 +25,14 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 def send_email(subject, message, to_email):
-    try:
-        sg = SendGridAPIClient(api_key=SENDGRID_API_KEY)
-        message = Mail(from_email=DEFAULT_FROM_EMAIL, to_emails=to_email, subject=subject, html_content=message)
-        response = sg.send(message)
-        return True
-    except Exception as e:
-        print(str(e))
-        return False
+    # try:
+    sg = SendGridAPIClient(api_key=SENDGRID_API_KEY)
+    message = Mail(from_email=DEFAULT_FROM_EMAIL, to_emails=to_email, subject=subject, html_content=message)
+    response = sg.send(message)
+    return True
+    # except Exception as e:
+    #     print(str(e))
+    #     return False
 
 # Create your views here.
 def home(request):
