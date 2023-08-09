@@ -27,7 +27,7 @@ from sendgrid.helpers.mail import Mail
 def send_email(subject, message, to_email):
     try:
         sg = SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
-        from_email = "massage.extreme@orange.fr"  # Remplacez par votre adresse email
+        from_email = "massage.extreme@orange.fr"
         message = Mail(from_email=from_email, to_emails=to_email, subject=subject, html_content=message)
         response = sg.send(message)
         return True
