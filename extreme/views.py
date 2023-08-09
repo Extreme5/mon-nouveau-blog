@@ -18,6 +18,23 @@ from siteweb.settings import *
 global time30
 time30 = True
 
+# Fonction qui gère les e-mails
+
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+def send_email(subject, message, to_email):
+    try:
+        sg = SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
+        from_email = "massage.extreme@orange.fr"  # Remplacez par votre adresse email
+        message = Mail(from_email=from_email, to_emails=to_email, subject=subject, html_content=message)
+        response = sg.send(message)
+        return True
+    except Exception as e:
+        print(str(e))
+        return False
+
 # Create your views here.
 def home(request):
     global time30
@@ -229,12 +246,16 @@ def reservation4(request):
                 cur.close()
                 conn.close()
 
-                corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé le massage {massage} avec l'option {option} pour {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
-                                f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
+                # corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé le massage {massage} avec l'option {option} pour {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
+                #                 f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
             
-                corps_message_client = ("Réservation chez l'Éxtrême", 
-                                        f"Bonjour, vous avez bien réservé le massage {massage} avec l'option {option} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
-                                        "massage.extreme@orange.fr", [f"{mail_to}"])
+                # corps_message_client = ("Réservation chez l'Éxtrême", 
+                #                         f"Bonjour, vous avez bien réservé le massage {massage} avec l'option {option} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
+                #                         "massage.extreme@orange.fr", [f"{mail_to}"])
+
+                corps_message = f"Bonjour, {mail_to} a réservé le massage {massage} avec l'option {option} pour {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}."
+            
+                corps_message_client = f"Bonjour, vous avez bien réservé le massage {massage} avec l'option {option} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
             
             elif 'massage' in globals():
                 
@@ -246,12 +267,16 @@ def reservation4(request):
                 cur.close()
                 conn.close()
 
-                corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé le massage {massage} pour {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
-                                f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
+                # corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé le massage {massage} pour {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
+                #                 f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
             
-                corps_message_client = ("Réservation chez l'Éxtrême", 
-                                        f"Bonjour, vous avez bien réservé le massage {massage} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
-                                        "massage.extreme@orange.fr", [f"{mail_to}"])
+                # corps_message_client = ("Réservation chez l'Éxtrême", 
+                #                         f"Bonjour, vous avez bien réservé le massage {massage} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
+                #                         "massage.extreme@orange.fr", [f"{mail_to}"])
+
+                corps_message = f"Bonjour, {mail_to} a réservé le massage {massage} pour {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}."
+            
+                corps_message_client = f"Bonjour, vous avez bien réservé le massage {massage} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
             
             else:
                 
@@ -263,16 +288,24 @@ def reservation4(request):
                 cur.close()
                 conn.close()
             
-                corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé un massage de {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
-                                f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
+                # corps_message = ("Éxtrême", f"Bonjour, {mail_to} a réservé un massage de {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.", 
+                #                 f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
             
-                corps_message_client = ("Réservation chez l'Éxtrême", 
-                                        f"Bonjour, vous avez bien réservé un massage chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
-                                        "massage.extreme@orange.fr", [f"{mail_to}"])
+                # corps_message_client = ("Réservation chez l'Éxtrême", 
+                #                         f"Bonjour, vous avez bien réservé un massage chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
+                #                         "massage.extreme@orange.fr", [f"{mail_to}"])
+
+                corps_message = f"Bonjour, {mail_to} a réservé un massage de {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}."
             
-            print(EMAIL_HOST_USER)
-            print(EMAIL_HOST_PASSWORD)
-            send_mass_mail ((corps_message, corps_message_client), fail_silently=False)
+                corps_message_client = f"Bonjour, vous avez bien réservé un massage chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.",
+            
+            # print(EMAIL_HOST_USER)
+            # print(EMAIL_HOST_PASSWORD)
+            # send_mass_mail ((corps_message, corps_message_client), fail_silently=False)
+
+            send_email("Réservation chez l'Extrême", corps_message_client, mail_to)
+            send_email("Extrême", corps_message, "albancadic@gmail.com")
+            send_email("Extrême", corps_message, "bastiencadic@orange.fr")
 
 
             return render(request,'confirmation.html')
