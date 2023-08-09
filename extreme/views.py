@@ -251,12 +251,12 @@ def reservation4(request):
                 #                 f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
             
                 # corps_message_client = ("Réservation chez l'Éxtrême", 
-                #                         f"Bonjour, vous avez bien réservé le massage {massage} avec l'option {option} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
+                #                         f"Bonjour, vous avez bien réservé le massage {massage} avec l'option {option} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême." 
                 #                         "massage.extreme@orange.fr", [f"{mail_to}"])
 
                 corps_message = f"Bonjour, {mail_to} a réservé le massage {massage} avec l'option {option} pour {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}."
             
-                corps_message_client = f"Bonjour, vous avez bien réservé le massage {massage} avec l'option {option} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
+                corps_message_client = f"Bonjour, vous avez bien réservé le massage {massage} avec l'option {option} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême." 
             
             elif 'massage' in globals():
                 
@@ -272,12 +272,12 @@ def reservation4(request):
                 #                 f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
             
                 # corps_message_client = ("Réservation chez l'Éxtrême", 
-                #                         f"Bonjour, vous avez bien réservé le massage {massage} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
+                #                         f"Bonjour, vous avez bien réservé le massage {massage} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême."
                 #                         "massage.extreme@orange.fr", [f"{mail_to}"])
 
                 corps_message = f"Bonjour, {mail_to} a réservé le massage {massage} pour {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}."
             
-                corps_message_client = f"Bonjour, vous avez bien réservé le massage {massage} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
+                corps_message_client = f"Bonjour, vous avez bien réservé le massage {massage} chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême." 
             
             else:
                 
@@ -293,12 +293,12 @@ def reservation4(request):
                 #                 f"albancadic.bruz@orange.fr", ["massage.extreme@orange.fr", "bastiencadic@orange.fr"])
             
                 # corps_message_client = ("Réservation chez l'Éxtrême", 
-                #                         f"Bonjour, vous avez bien réservé un massage chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.", 
+                #                         f"Bonjour, vous avez bien réservé un massage chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême." 
                 #                         "massage.extreme@orange.fr", [f"{mail_to}"])
 
                 corps_message = f"Bonjour, {mail_to} a réservé un massage de {form_temps} min chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}."
             
-                corps_message_client = f"Bonjour, vous avez bien réservé un massage chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême.",
+                corps_message_client = f"Bonjour, vous avez bien réservé un massage chez l'Éxtrême le {form_date} de {form_hour} à {heure_fin}.\n\nNous vous attendons à l'horaire réservé pour vous fournir un moment de détente extrême de {form_temps}min.\n\n⚠ Si vous avez réservé entre le lundi, et le vendredi, votre réservation peut encore être refusé, surveillez vos mails.\nSi vous n'êtes pas à l'origine de cette demande, merci de répondre à ce message pour nous en informer.\nCordialement, l'équipe dirigeante de l'Éxtrême."
             
             # print(EMAIL_HOST_USER)
             # print(EMAIL_HOST_PASSWORD)
