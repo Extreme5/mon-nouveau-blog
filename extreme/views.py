@@ -26,9 +26,8 @@ from sendgrid.helpers.mail import Mail
 
 def send_email(subject, message, to_email):
     try:
-        sg = SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
-        from_email = "massage.extreme@orange.fr"
-        message = Mail(from_email=from_email, to_emails=to_email, subject=subject, html_content=message)
+        sg = SendGridAPIClient(api_key=SENDGRID_API_KEY)
+        message = Mail(from_email=DEFAULT_FROM_EMAIL, to_emails=to_email, subject=subject, html_content=message)
         response = sg.send(message)
         return True
     except Exception as e:
