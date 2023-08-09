@@ -20,7 +20,7 @@ time30 = True
 
 # Fonction qui gère les e-mails
 
-import os
+import email.py
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
