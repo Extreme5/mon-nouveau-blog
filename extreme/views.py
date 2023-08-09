@@ -20,8 +20,8 @@ time30 = True
 
 # Fonction qui gère les e-mails
 
-# from sendgrid import SendGridAPIClient
-# from sendgrid.helpers.mail import Mail
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 def send_email(subject, message, to_email):
     # try:
