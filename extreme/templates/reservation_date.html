@@ -74,45 +74,45 @@ input:input.bouton{
 			xhr.setRequestHeader('Content-Type', 'application/json');
 			xhr.setRequestHeader('X-CSRFToken', csrfToken);
 			xhr.onreadystatechange = function() {
-			if (xhr.readyState === 4 && xhr.status === 200) {
-				// Réponse du serveur
-				var response = JSON.parse(xhr.responseText);
-				// Liste des options à supprimer
-				var optionsToRemove = response.time_list;
-
-				// Réinitialiser la liste déroulante avec les options d'origine
-				selectElement.innerHTML = '';
-				for (var i = 0; i < originalOptions.length; i++) {
-				selectElement.appendChild(originalOptions[i].cloneNode(true));
-				}
-
-				// Vérifier si des options doivent être supprimées
-				if (optionsToRemove && optionsToRemove.length > 0) {
-					// Parcourir les options de la liste déroulante
-					for (var i = selectElement.options.length - 1; i >= 0; i--) {
-						var option = selectElement.options[i];
-						var optionText = option.text;
-						// Vérifier si le texte de l'option contient l'une des valeurs à supprimer
-						if (optionsToRemove.indexOf(optionText) !== -1) {
-						// Supprimer l'option de la liste déroulante
-						selectElement.remove(i);
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					// Réponse du serveur
+					var response = JSON.parse(xhr.responseText);
+					// Liste des options à supprimer
+					var optionsToRemove = response.time_list;
+	
+					// Réinitialiser la liste déroulante avec les options d'origine
+					selectElement.innerHTML = '';
+					for (var i = 0; i < originalOptions.length; i++) {
+					selectElement.appendChild(originalOptions[i].cloneNode(true));
+					}
+	
+					// Vérifier si des options doivent être supprimées
+					if (optionsToRemove && optionsToRemove.length > 0) {
+						// Parcourir les options de la liste déroulante
+						for (var i = selectElement.options.length - 1; i >= 0; i--) {
+							var option = selectElement.options[i];
+							var optionText = option.text;
+							// Vérifier si le texte de l'option contient l'une des valeurs à supprimer
+							if (optionsToRemove.indexOf(optionText) !== -1) {
+							// Supprimer l'option de la liste déroulante
+							selectElement.remove(i);
+							}
 						}
 					}
 				}
+				var date_ajax = JSON.stringify({ selectedDate });
+				xhr.send(date_ajax);
 			}
-			var date_ajax = JSON.stringify({ selectedDate });
-			xhr.send(date_ajax);
-		}
 		
-		// ajouter warning si date = aujourd'hui
-		var selectedDate = document.getElementById('datefield').value;
-		var ch = "console"
-		var ch2 = "dehors"
-		if (selectedDate = today) {
-			document.getElementById("warning").append("⚠ Les créneaux du jours même sont soumis à validation de l'équipe de l'Extrême.");
-			console.log(ch);
-		}
-		console.log(selectedDate);
+			// ajouter warning si date = aujourd'hui
+			var selectedDate = document.getElementById('datefield').value;
+			var ch = "console"
+			var ch2 = "dehors"
+			if (selectedDate = today) {
+				document.getElementById("warning").append("⚠ Les créneaux du jours même sont soumis à validation de l'équipe de l'Extrême.");
+				console.log(ch);
+			}
+			console.log(selectedDate);
 		};
 
 		// Récupérer les options d'origine au chargement de la page
