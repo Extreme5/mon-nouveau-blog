@@ -39,22 +39,6 @@ input:input.bouton{
 </style>
 
 <script>
-	var today = new Date();
-	var dd = today.getDate() + 1;
-	var mm = today.getMonth() + 1; // January is 0!
-	var yyyy = today.getFullYear();
-			
-	// Construction du format yyyy-mm-dd
-	if (dd < 10) {
-		dd = '0' + dd;
-	}
-			
-	if (mm < 10) {
-		mm = '0' + mm;
-	}
-			
-	today = yyyy + '-' + mm + '-' + dd;
-	document.getElementById("datefield").setAttribute("min", today);
 
 	document.addEventListener('DOMContentLoaded', function() {
 		// Options d'origine de la liste déroulante
@@ -103,9 +87,23 @@ input:input.bouton{
 				var date_ajax = JSON.stringify({ selectedDate });
 				xhr.send(date_ajax);
 			}
+			var today = new Date();
+			var dd = today.getDate() + 1;
+			var mm = today.getMonth() + 1; // January is 0!
+			var yyyy = today.getFullYear();
+			
+			// Construction du format yyyy-mm-dd
+			if (dd < 10) {
+				dd = '0' + dd;
+			}
+			
+			if (mm < 10) {
+				mm = '0' + mm;
+			}
+			
+			today = yyyy + '-' + mm + '-' + dd;
 		
 			// ajouter warning si date = aujourd'hui
-			var selectedDate = document.getElementById('datefield').value;
 			var ch = "console"
 			var ch2 = "dehors"
 			if (selectedDate = today) {
@@ -131,6 +129,25 @@ input:input.bouton{
 		<input id="datefield" name="date" type="date" class="shadow"><br>
 		<div id="results"></div>
 		<div id="warning"></div>
+
+		<script>
+			var today = new Date();
+			var dd = today.getDate() + 1;
+			var mm = today.getMonth() + 1; // January is 0!
+			var yyyy = today.getFullYear();
+					
+			// Construction du format yyyy-mm-dd
+			if (dd < 10) {
+				dd = '0' + dd;
+			}
+					
+			if (mm < 10) {
+				mm = '0' + mm;
+			}
+					
+			today = yyyy + '-' + mm + '-' + dd;
+			document.getElementById("datefield").setAttribute("min", today);
+		</script>
 		
 		<label for="hour" class="mt-5 h3">Puis votre heure.</label><br>
 		<select class="shadow heure" name="hour">
