@@ -96,15 +96,15 @@ input:input.bouton{
 						if (optionsToRemove.indexOf(optionText) !== -1) {
 						// Supprimer l'option de la liste déroulante
 						selectElement.remove(i);
-						// ajouter warning si date = aujourd'hui
-						var selectedDate = document.getElementById('datefield').value;
-						if (selectedDate = today) {
-							document.getElementById("warning").append("⚠ Les créneaux du jours même sont soumis à validation de l'équipe de l'Extrême.");
-							console.log("condition")
-						}
-						console.log("pas condition")
 						}
 					}
+					// ajouter warning si date = aujourd'hui
+					var selectedDate = document.getElementById('datefield').value;
+					if (selectedDate = today) {
+						document.getElementById("warning").append("⚠ Les créneaux du jours même sont soumis à validation de l'équipe de l'Extrême.");
+						console.log("condition")
+					}
+					console.log("pas condition")
 				}
 			}
 			};
