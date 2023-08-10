@@ -39,6 +39,23 @@ input:input.bouton{
 </style>
 
 <script>
+	var today = new Date();
+	var dd = today.getDate() + 1;
+	var mm = today.getMonth() + 1; // January is 0!
+	var yyyy = today.getFullYear();
+			
+	// Construction du format yyyy-mm-dd
+	if (dd < 10) {
+		dd = '0' + dd;
+	}
+			
+	if (mm < 10) {
+		mm = '0' + mm;
+	}
+			
+	today = yyyy + '-' + mm + '-' + dd;
+	document.getElementById("datefield").setAttribute("min", today);
+
 	document.addEventListener('DOMContentLoaded', function() {
 		// Options d'origine de la liste déroulante
 		var originalOptions = [];
@@ -79,6 +96,11 @@ input:input.bouton{
 						if (optionsToRemove.indexOf(optionText) !== -1) {
 						// Supprimer l'option de la liste déroulante
 						selectElement.remove(i);
+						// ajouter warning si date = aujourd'hui
+						var selectedDate = document.getElementById('datefield').value;
+						if (selectedDate = today) {
+							document.getElementById("warning").append("⚠ Les créneaux du jours même sont soumis à validation de l'équipe de l'Extrême.");
+						}
 						}
 					}
 				}
@@ -104,31 +126,6 @@ input:input.bouton{
 		<input id="datefield" name="date" type="date" class="shadow"><br>
 		<div id="results"></div>
 		<div id="warning"></div>
-		
-		<script>
-			var today = new Date();
-			var dd = today.getDate() + 1;
-			var mm = today.getMonth() + 1; // January is 0!
-			var yyyy = today.getFullYear();
-			
-			// Construction du format yyyy-mm-dd
-			if (dd < 10) {
-				dd = '0' + dd;
-			}
-			
-			if (mm < 10) {
-				mm = '0' + mm;
-			}
-			
-			today = yyyy + '-' + mm + '-' + dd;
-			document.getElementById("datefield").setAttribute("min", today);
-
-			
-			var selectedDate = document.getElementById('datefield').value;
-			if (selectedDate = today) {
-				document.getElementById("warning").append("⚠ Les créneaux du jours même sont soumis à validation de l'équipe de l'Extrême.");
-			}
-		</script>
 		
 		<label for="hour" class="mt-5 h3">Puis votre heure.</label><br>
 		<select class="shadow heure" name="hour">
