@@ -99,20 +99,21 @@ input:input.bouton{
 						}
 					}
 				}
-				// ajouter warning si date = aujourd'hui
-				var selectedDate = document.getElementById('datefield').value;
-				var ch = "console"
-				var ch2 = "dehors"
-				if (selectedDate = today) {
-					document.getElementById("warning").append("⚠ Les créneaux du jours même sont soumis à validation de l'équipe de l'Extrême.");
-					console.log(ch);
-				}
-				console.log(ch2);
 			}
-			};
 			var date_ajax = JSON.stringify({ selectedDate });
 			xhr.send(date_ajax);
 		}
+		
+		// ajouter warning si date = aujourd'hui
+		var selectedDate = document.getElementById('datefield').value;
+		var ch = "console"
+		var ch2 = "dehors"
+		if (selectedDate = today) {
+			document.getElementById("warning").append("⚠ Les créneaux du jours même sont soumis à validation de l'équipe de l'Extrême.");
+			console.log(ch);
+		}
+		console.log(ch2);
+		};
 
 		// Récupérer les options d'origine au chargement de la page
 		sendSelectedDate();
