@@ -103,6 +103,7 @@ input:input.bouton{
 		<label for="date" class="mb-3 mt-5 h3">Veuillez choisir votre date de réservation...</label><br/>
 		<input id="datefield" name="date" type="date" class="shadow"><br>
 		<div id="results"></div>
+		<div id="warning"></div>
 		
 		<script>
 			var today = new Date();
@@ -121,7 +122,11 @@ input:input.bouton{
 			
 			today = yyyy + '-' + mm + '-' + dd;
 			document.getElementById("datefield").setAttribute("min", today);
-			// if (
+
+			
+			var selectedDate = document.getElementById('datefield').value;
+			if (selectedDate = today) {
+				document.getElementById("warning").append("⚠ Les créneaux du jours même sont soumis à validation de l'équipe de l'Extrême.");
 		</script>
 		
 		<label for="hour" class="mt-5 h3">Puis votre heure.</label><br>
