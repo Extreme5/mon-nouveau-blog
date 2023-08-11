@@ -85,10 +85,9 @@ input:input.bouton{
 						}
 					}
 				}
-				else {console.log("la requete ajax a retourné une erreur")}
-				var date_ajax = JSON.stringify({ selectedDate });
-				xhr.send(date_ajax);
 			}
+			var date_ajax = JSON.stringify({ selectedDate });
+			xhr.send(date_ajax);
 			var today = new Date();
 			var dd = today.getDate();
 			var mm = today.getMonth() + 1; // January is 0!
