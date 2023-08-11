@@ -57,7 +57,6 @@ input:input.bouton{
 			xhr.open('POST', 'reservation_date', true);
 			xhr.setRequestHeader('Content-Type', 'application/json');
 			xhr.setRequestHeader('X-CSRFToken', csrfToken);
-			console.log("test")
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState === 4 && xhr.status === 200) {
 					// Réponse du serveur
@@ -113,7 +112,6 @@ input:input.bouton{
 				const element = document.getElementById("warning");
 				element.innerHTML = "";
 			}
-			console.log("test2")
 		};
 
 		// Récupérer les options d'origine au chargement de la page
