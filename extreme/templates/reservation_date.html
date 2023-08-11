@@ -63,7 +63,7 @@ input:input.bouton{
 					var response = JSON.parse(xhr.responseText);
 					// Liste des options à supprimer
 					var optionsToRemove = response.time_list;
-					console.log("response");
+					console.log(response);
 	
 					// Réinitialiser la liste déroulante avec les options d'origine
 					selectElement.innerHTML = '';
