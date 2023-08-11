@@ -176,7 +176,10 @@ def reservation_date(request):
                     final_string = date_string-timedelta(minutes = (j+1)*5)
                     final_date = final_string.time().strftime('%H : %M')
                     time_list_final.append(final_date)
+                    print(" ")
+                    print(" ")
                     print(time_list_final)
+                    print(" ")
 
 
             # Retourner une réponse JSON
