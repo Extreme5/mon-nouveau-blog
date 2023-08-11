@@ -63,7 +63,7 @@ input:input.bouton{
 					var response = JSON.parse(xhr.responseText);
 					// Liste des options à supprimer
 					var optionsToRemove = response.time_list;
-					console.log(optionsToRemove);
+					console.log(response);
 	
 					// Réinitialiser la liste déroulante avec les options d'origine
 					selectElement.innerHTML = '';
@@ -105,16 +105,12 @@ input:input.bouton{
 			today = yyyy + '-' + mm + '-' + dd;
 		
 			// ajouter warning si date = aujourd'hui
-			var ch = "console"
-			var ch2 = "dehors"
 			if (selectedDate == today) {
 				document.getElementById("warning").innerHTML = "⚠ Les créneaux du jours même sont soumis à validation de l'équipe de l'Extrême.";
-				console.log("jour meme")
 			} else {
 				const element = document.getElementById("warning");
 				element.innerHTML = "";
 			}
-			console.log(selectedDate);
 		};
 
 		// Récupérer les options d'origine au chargement de la page
