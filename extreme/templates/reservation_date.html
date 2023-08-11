@@ -85,6 +85,7 @@ input:input.bouton{
 						}
 					}
 				}
+				else console.log("la requete ajax a retourné une erreur")
 				var date_ajax = JSON.stringify({ selectedDate });
 				xhr.send(date_ajax);
 			}
