@@ -17,4 +17,4 @@ urlpatterns = [
     path('contact',contact, name="contact"),
     path('confirmation',confirmation, name="confirmation"),
     path('thalasso_mesure',thalasso_mesure, name="thalasso_mesure"),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]

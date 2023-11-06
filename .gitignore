@@ -5,6 +5,10 @@ __pycache__
 # pour les mots de passe des emails
 email.py
 
+# pour les settings, local ou online
+settings.py
+settings_local.py
+
 # Env
 .env
 myvenv/
