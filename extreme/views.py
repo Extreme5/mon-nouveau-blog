@@ -11,8 +11,6 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
 import json
-path_database = "/home/Extreme1/extreme1.eu.pythonanywhere.com/bdd.db"
-# path_database = "/Users/albancadic/Documents/mon_site/siteweb/bdd.db"
 from siteweb.settings import *
 
 global time30
