@@ -82,6 +82,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+path_database = "/home/Extreme1/extreme1.eu.pythonanywhere.com/bdd.db"
 
 
 # Password validation
