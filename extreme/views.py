@@ -12,8 +12,6 @@ from django.views.decorators.http import require_POST
 from django.http import JsonResponse
 import json
 from siteweb.settings import *
-path_database = "/home/Extreme1/extreme1.eu.pythonanywhere.com/bdd.db"
-
 
 global time30
 time30 = True
