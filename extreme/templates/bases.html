@@ -38,34 +38,40 @@
       border-bottom: 1px solid;
       background: #404040;
     }
+    .hs
+    {color: red}
 
 	</style>
 	
   </head>
   <body>
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow">
-      <a class="navbar-brand text-white container"><img src="{% static 'logo_extreme.png' %}" width="100" height="auto"></a>
-	    <div class="container">
-        <ul class="navbar-nav" bs-active-link>
-          <li class="nav-item">
-            <a class="nav-link text-white style" href="/">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white style" href="{% url 'reservation_temps'%}">Réserver un créneau</a>
-          <li class="nav-item">
-            <a class="nav-link text-white style" href="{% url 'reservation1'%}">Consulter nos différents massages</a>
-          </li>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white style" href="{% url 'nous'%}">Qui sommes nous ?</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white style" href="{% url 'contact'%}">Nous contacter</a>
-          </li>
-        </ul>
-		</div>
+    <a class="navbar-brand text-white container"><img src="{% static 'logo_extreme.png' %}" width="100" height="auto"></a>
+    <div class="container">
+      <ul class="navbar-nav" bs-active-link>
+        <li class="nav-item">
+          <a class="nav-link text-white style" href="/">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white style" href="{% url 'reservation_temps'%}">Réserver un créneau</a>
+        <li class="nav-item">
+          <a class="nav-link text-white style" href="{% url 'reservation1'%}">Consulter nos différents massages</a>
+        </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white style" href="{% url 'nous'%}">Qui sommes nous ?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white style" href="{% url 'contact'%}">Nous contacter</a>
+        </li>
+      </ul>
+    </div>
   </nav>
-    {% block content %}
+  <center>
+  <p class="hs h3">⚠ Ce site est temporairement hors service. ⚠<br>
+  Pour réserver un massage veuillez nous <a href="{% url 'contact'%}">contacter</a>.</p>
+  </center>
+{% block content %}
 	
 	{% endblock %}
 	<footer class="bg-dark p-0.5 fixed-bottom">
